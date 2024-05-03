@@ -17,11 +17,11 @@ pipeline {
                     archiveArtifacts artifacts: '**/target/*.war'
                 }
             }
+        }
           stage('Deploy to container'){
             steps{
                 deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://3.91.76.36:8080/')], contextPath: null, war: '**/*.war'
             }
-           }
+          }
         }
-    }
 }
